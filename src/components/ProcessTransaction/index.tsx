@@ -13,6 +13,7 @@ import {
 import apiClient from '../../config';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../types';
+import {useRoute} from '@react-navigation/native';
 
 type TransactionScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -23,9 +24,17 @@ type Props = {
   navigation: TransactionScreenNavigationProp;
 };
 
+type RouteParams = {
+  id: string;
+};
+
 const ProcessTransaction = ({navigation}: Props) => {
+  const route = useRoute();
+  const {id} = route.params as RouteParams;
+  console.log('id', id);
+
   const [body, setbody] = useState({
-    product_id: '',
+    product_id: id,
     transaction_date: '',
     customer_name: '',
     is_cancelled: '',
@@ -49,7 +58,7 @@ const ProcessTransaction = ({navigation}: Props) => {
     try {
       const res = await apiClient.post('sell-transaction', body);
       if (res.data.status == 'success') {
-        navigation.navigate('Home');
+        navigation.navigate('Tabs');
         Alert.alert('Berhasil');
       }
       console.log('data', res.data.status);
@@ -62,14 +71,14 @@ const ProcessTransaction = ({navigation}: Props) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View>
+        {/* <View>
           <Text>Product</Text>
           <TextInput
             style={styles.input}
             onChangeText={e => handleChange('product_id', e)}
             value={body.product_id}
           />
-        </View>
+        </View> */}
         <View>
           <Text>Tanggal Transaksi</Text>
           <TextInput

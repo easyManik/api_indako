@@ -69,13 +69,13 @@ const Login = ({navigation}: Props) => {
       console.log('data login', body);
       const response = await apiClient.post(
         'login',
-        // body,
+        body,
 
-        {
-          email: 'easy@gmail.com',
-          role: role,
-          password: '123',
-        },
+        // {
+        //   email: 'easy@gmail.com',
+        //   role: role,
+        //   password: '123',
+        // },
       );
       console.log('data 1', response);
       if (response.data.status == 'success') {

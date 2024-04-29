@@ -83,7 +83,7 @@ const ProductScreen = ({navigation}: Props) => {
         .then(res => setuom(res))
         .catch(error => console.error('Error fetching price:', error));
     }
-  }, [id_product]);
+  }, [id_product, uom, data]);
 
   const handleSearch = () => {
     console.log('Navigating to Search');
@@ -105,7 +105,8 @@ const ProductScreen = ({navigation}: Props) => {
         <ScrollView>
           {data.map((item, index) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate('Detail', {id: item.id})}>
+              onPress={() => navigation.navigate('Detail', {id: item.id})}
+              key={index}>
               <View
                 style={tw`flex flex-row bg-gray-100 mb-3 p-2 rounded-lg w-full`}>
                 <View style={tw`flex flex-row items-center mr-3`}>
@@ -136,7 +137,9 @@ const ProductScreen = ({navigation}: Props) => {
                       <View style={tw`w-fit rounded rounded-lg`}>
                         <Button
                           onPress={() =>
-                            navigation.navigate('ProcessTransaction')
+                            navigation.navigate('ProcessTransaction', {
+                              id: item.id,
+                            })
                           }
                           title="Proses"
                         />

@@ -50,14 +50,14 @@ const Home = ({navigation}: Props) => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [data]);
 
   const handleLogout = async () => {
     try {
       const response = await apiClient.post('logout');
       if (response.data.status === 'success') {
         await AsyncStorage.removeItem('authToken');
-        navigation.navigate('Login'); // Example navigation to Login screen
+        navigation.navigate('Login');
       } else {
         Alert.alert('Logout Failed', response.data.message);
       }
@@ -145,7 +145,8 @@ const Home = ({navigation}: Props) => {
             <View style={styles.popularList}>
               {data.map((item, index) => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('Detail', {id: item.id})}>
+                  onPress={() => navigation.navigate('Detail', {id: item.id})}
+                  key={index}>
                   <View style={tw`rounded p-2 bg-gray-100`}>
                     <View style={styles.productStyle}>
                       <View style={styles.category}>

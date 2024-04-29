@@ -63,7 +63,7 @@ const DetailProduct = () => {
         .then(res => setuom(res))
         .catch(error => console.error('Error fetching price:', error));
     }
-  }, [id]);
+  }, [id, uom]);
 
   return (
     <View style={tw`w-full border h-full`}>

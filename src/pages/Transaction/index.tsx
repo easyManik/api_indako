@@ -61,8 +61,6 @@ const TransactionScreen = ({navigation}: Props) => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
-  const itemArr = Array.from({length: 6}, (_, index) => index);
-
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -87,7 +85,8 @@ const TransactionScreen = ({navigation}: Props) => {
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('DetailTtransaction', {id: item.id})
-                }>
+                }
+                key={index}>
                 <View style={styles.productStyle}>
                   <View style={styles.category}>
                     <View style={styles.details}>

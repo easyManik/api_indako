@@ -81,7 +81,7 @@ const DetailTransaction = () => {
         .then(res => setuom(res))
         .catch(error => console.error('Error fetching price:', error));
     }
-  }, [id]);
+  }, [id, data, uom, price, dataProduct]);
 
   return (
     <View style={tw`w-full border h-full`}>

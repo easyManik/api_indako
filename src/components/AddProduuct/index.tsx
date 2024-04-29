@@ -91,7 +91,7 @@ const AddProduct = ({navigation}: Props) => {
           />
         </View>
         <View>
-          <Text>Apakah Aktif?</Text>
+          <Text>Apakah Aktif? (1 untuk Ya dan 0 untuk Tidak)</Text>
           <TextInput
             style={styles.input}
             onChangeText={e => handleChange('is_active', e)}
@@ -99,7 +99,7 @@ const AddProduct = ({navigation}: Props) => {
           />
         </View>
         <View>
-          <Text>Apakah Bahan Mentah?</Text>
+          <Text>Apakah Bahan Mentah? (1 untuk Ya dan 0 untuk Tidak)</Text>
           <TextInput
             style={styles.input}
             onChangeText={e => handleChange('is_raw_material', e)}
